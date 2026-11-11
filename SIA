@@ -1,0 +1,490 @@
+
+Security impact analysis form	 
+
+SIA Number 
+
+ 
+
+CR Number (if dependent on) 
+
+ 
+
+Date 
+
+ 
+
+SIA Participants 
+
+ 
+
+Affected System, Components 
+
+ 
+
+Summary 
+
+ 
+
+Security scanning by product, status, findings 
+
+Infrastructure – Qualys – active in Dev stack XX 
+
+Web App – Contrast – active in Dev stack XX 
+
+Database – Microsoft Defender – active in Dev stack XX 
+
+OS – Microsoft Defender – active in Dev stack XX 
+
+Code – Snyk –  scanned, findings introduced in Dev stack XX 
+
+Security guidelines (worksheet) 
+
+ 
+
+Cloud asset baseline affecting 
+
+ 
+
+Database baseline affecting 
+
+ 
+
+Pen-test needed 
+
+ 
+
+Summary of Identified Risks 
+
+ 
+
+Mitigation or Necessary Updates 
+
+ 
+
+Overall Recommendation 
+
+ 
+
+Optional Diagrams or Highlights 
+
+ 
+
+ 
+ 
+
+ 
+
+Directions: Please complete the table below by indicating Y/N if a particular security event occurs and entering a description of the summary of security impacts/technical overview/risks identified. Highlight any rows where a possible significant change is detected. The RAMP Controls impacted column is not all-inclusive.  Note: this list is not all-inclusive.  
+
+Worksheet 
+
+Impact? (Y/N) 
+
+Category 
+
+Scope of Change 
+
+Mitigation or Necessary Updates 
+
+RAMP Controls Impacted 
+
+Summary of Security Impact/ Technical Overview/ Risks Identified 
+
+ 
+
+Mission/ Business requirements 
+
+New Users or 
+New User Roles Added 
+
+SSP updates. 
+
+ 
+
+ 
+
+AC-2, AC-6 
+
+ 
+
+ 
+
+Mission/ Business requirements 
+
+Change in data collection, storage, sharing 
+
+PII affecting update. 
+
+ 
+
+ 
+
+AC-21, AP-1, AR-2, AR-8, DM-2, SE-1, TR-1, UL-1 
+
+ 
+
+ 
+
+Mission/ 
+
+Business requirements 
+
+Cessation of mission or function. 
+
+Potential update to SSP. 
+
+Potential impact to multiple controls depending on nature of mission/function.  
+
+ 
+
+ 
+
+Policy/ 
+
+Standards 
+
+New revisions of SSP and CM policy 
+
+Updates to SSP. 
+
+Potential impact to multiple controls depending on nature of the policy/ 
+
+standards. 
+
+ 
+
+ 
+
+Laws, Regulations, Directives 
+
+New or Changed 
+
+Updates to SSP.  
+
+Potential impact to multiple controls depending on nature of laws, regulations, directives. 
+
+ 
+
+ 
+
+System boundary 
+
+Interconnections and New connection to Auth Boundary system or Service 
+
+Updates to SIA must occur. If not standard connection service/inheritance from another accredited RAMP system, SCA will be required.  
+
+ 
+
+Updates to SSP artifacts must be made, including SSP 
+
+AC-4, CA-3, CA-9, PL-2, AC-3, AC-20, AU-2, AU-12, AU-16, CA-7, IA-3, SA-9, SC-7, SI-4 
+
+ 
+
+ 
+
+System boundary 
+
+Architecture, Topology, Port/Protocol/Service change 
+
+Zone changes 
+
+Implementation or inheritance of new services 
+
+Updates to SSP artifacts must be made 
+
+CM-2, PL-2, PL-8, SA-3, CM-6, CM-8, CM-9, SA-10, PM-5, PM-7 
+
+ 
+
+ 
+
+Security components 
+
+Identification, Authentication, Authorization 
+
+ 
+
+New methods for authentication and/or identifiers added 
+
+ 
+
+Migrations between Single Factor and MFA 
+
+New and modified control implementations must be tested. SCA required unless inheriting from existing RAMP system.  
+
+ 
+
+Updates to SSP artifacts must be made 
+
+IA (all) 
+
+ 
+
+ 
+
+Security Components 
+
+Security Controls – Change in implementation standard or status 
+
+New and modified control implementations must be tested via existing security processes. All changes must be documented within the SSP. Changes in controls that cause controls to no longer be “Satisfied” must be submitted as a POA&M and documented.  
+
+List specific controls changed 
+
+ 
+
+PL-2 (SSP) 
+
+ 
+
+ 
+
+User Interface 
+
+Updates to GUI including addition of new pages, new inputs 
+
+New pages must go through 508 testing, Static and Dynamic code analysis to determine no additional threats from XSS or other new vulnerabilities.  
+
+CM-2, CM-3, CM-4 
+
+ 
+
+SI-10 
+
+ 
+
+ 
+
+New or Updated Hardware 
+
+Servers, Communication Devices 
+
+If the equipment is updated with similar vendor and models, then minimal testing may be needed. However, if they are new models or vendors, with different configurations and settings, then it is considered a significant change. Equipment will need to be hardened, and at minimum, have vulnerability and configuration scans performed on them. 
+
+CM-2, CM-3, CM-4, CM-6, CM-7 
+
+ 
+
+PL-2 (SSP) 
+
+ 
+
+HW/SW List 
+
+ 
+
+AC-19, SI-4 
+
+ 
+
+CP-2 
+
+ 
+
+ 
+
+New or Updated Operating System 
+
+Change in Operating System 
+
+If the software is updated with similar vendor and versions, then minimal testing may be needed. However, if they are significantly different versions (i.e.., not an “incremental version update”) or different vendors, with different configurations and settings, then it is considered a significant change. Affected systems will need to be hardened and, at minimum, have vulnerability and configuration scans performed on them. 
+
+CM-2, CM-3, CM-4, CM-6, CM-7 
+
+ 
+
+RA-5 Vulnerability Scanning 
+
+ 
+
+CA-9(1) Compliance Checks 
+
+ 
+
+PL-2 (SSP) 
+
+ 
+
+HW/SW List 
+
+ 
+
+CP-2 
+
+ 
+
+ 
+
+New or Updated Security Software 
+
+New Security Software or Perimeter Security Change 
+
+If the software is updated with similar vendor and versions, then minimal testing may be needed. However, if they are significantly different versions (i.e.., not an “incremental version update”) or different vendors, with different configurations and settings, then it is considered a significant change. Affected systems will need to be hardened and, at minimum, have vulnerability and configuration scans performed on them. 
+
+CM-2, CM-3, CM-4, CM-6, CM-7 
+
+ 
+
+RA-5 Vulnerability Scanning 
+
+ 
+
+CA-9(1) Compliance Checks 
+
+ 
+
+PL-2 (SSP) 
+
+ 
+
+HW/SW List 
+
+Potential impact to multiple controls depending on nature of software 
+
+ 
+
+ 
+
+Support Software 
+
+New Support Software  
+
+ 
+
+ 
+
+If the software is updated with similar vendor and versions, then minimal testing may be needed. However, if they are significantly different versions (i.e.., not an “incremental version update”) or different vendors, with different configurations and settings, then it is considered a significant change. Affected systems will need to be hardened and, at minimum, have vulnerability and configuration scans performed on them. 
+
+CM-2, CM-3, CM-4, CM-6, CM-7 
+ 
+
+RA-5 
+
+ 
+
+PL-2 (SSP) 
+
+ 
+
+HW/SW List 
+
+ 
+
+Potential TRB review/approval 
+
+ 
+
+ 
+
+Vendor Patches 
+
+Software, Servers 
+
+Software patch updates that cause the baseline configuration, or security controls implementations, to change will need a re-authorization. All Software upgrades need to be tested pre-launch to prevent any issues. Affected systems will need to be hardened and, at minimum, have vulnerability and configuration scans performed on them. 
+
+CM-2, CM-3, CM-4 
+
+ 
+
+PL-2 (SSP) 
+
+ 
+
+HW/SW List 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+System Boundary 
+
+Change to Logical Access Points 
+
+Vulnerability Scan is required 
+
+AC-17, AC-2, AC-3, AC-18, AC-19, AC-20,  
+
+ 
+
+CA-3, CA-7,  
+
+ 
+
+CM-8, IA-2, IA-3, IA-8, MA-4, PE-17, PL-4, SC-10, SI-4 
+
+ 
+
+ 
+
+Vulnerability (New or Existing) 
+
+Attacks Developed 
+
+Risk Assessment update, additional work as required. New and modified control implementations must be tested as part of the Configuration (Change) Management processes. 
+
+RA-2, RA-3, CM-8, MP-4, SC-7, SI-2, CA-2, CA-7, CM-3, CM-5, CM-8, MA-2, IR-4, RA-5, SA-10, SA-11, SI-11 
+
+ 
+
+ 
+
+Vulnerability (New or Existing) 
+
+Attacks Succeed Elsewhere 
+
+Risk Assessment update, additional work as required. New and modified control implementations must be tested as part of the Configuration (Change) Management processes. 
+
+RA-2, RA-3, CM-8, MP-4, SC-7, SI-2, CA-2, CA-7, CM-3, CM-5, CM-8, MA-2, IR-4, RA-5, SA-10, SA-11, SI-11 
+
+ 
+
+ 
+
+Vulnerability (New or Existing) 
+
+Found (No Attacks Known) 
+
+Add to Risk Assessment. New and modified control implementations must be tested as part of the Configuration (Change) Management processes. 
+
+RA-2, RA-3, CM-8, MP-4, SC-7, SI-2, CA-2, CA-7, CM-3, CM-5, CM-8, MA-2, IR-4, RA-5, SA-10, SA-11, SI-11 
+
+ 
+
+ 
+
+System boundary 
+
+New processing location(s) 
+
+A new processing location will need to go thru a re-authorization to ensure the system is secure from any issues or attacks 
+
+PE(family) 
+
+ 
+
+CM-2, CM-3, CM-4, CM-6, CM-7 
+
+ 
+
+ 
+
+System boundary (environment) 
+
+Change or Addition of Hosting Infrastructure or Site 
+
+Full FedRAMP authorization is required. New and modified control implementations (for applicable applications) must be tested as part of the Configuration (Change) Management processes. Application obtains a new/updated ATO. 
+
+PE(family) 
+
+  
+
+CM-2, CM-3, CM-4, CM-6, CM-7 
+
+ 
+
