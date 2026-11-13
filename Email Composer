@@ -1,0 +1,22 @@
+Title: Request for GovRAMP In-Scope Production Cloud Account and Application Inventory
+
+Content:
+Hi Team,
+
+As part of our ongoing GovRAMP Moderate POA&M development activities, I would like to request an inventory of all production cloud accounts currently onboarded into Wiz that fall within the GovRAMP authorization boundary.
+
+Specifically, it would be helpful to obtain the following information:
+
+Cloud Account Inventory: A list of all in-scope production cloud accounts across AWS, Azure, and GCP, including account names, account/subscription/project IDs, and associated cloud providers.
+
+Application Mapping: If available, a list of applications or services associated with each cloud account, including their respective application owners or responsible teams.
+
+Onboarding and Coverage Status: Confirmation of whether each identified account is actively onboarded into Wiz and included in the applicable vulnerability and compliance scanning activities.
+
+This information is needed to validate the completeness and accuracy of our GovRAMP asset inventory and ensure that all applicable cloud resources are appropriately accounted for in our POA&M reporting and remediation tracking.
+
+If an existing Wiz inventory report or export contains this information, please feel free to share it in Excel or CSV format.
+
+Thank you for your support. Please let me know if any clarification is needed.
+
+Best regards,
