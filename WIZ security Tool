@@ -1,0 +1,852 @@
+# Wiz Security Tool: Vulnerability Management, Software Inventory, and Compliance Scanning Procedures
+
+**Project:** GovRAMP Moderate Authorization  
+**Security Tool:** Wiz  
+**Purpose:** Vulnerability Management, Compliance Monitoring, Asset Inventory, and POA&M Reporting  
+**Reporting Frequency:** Monthly, during the second week of each month, or upon request  
+**POA&M Scope:** Production resources within the approved GovRAMP authorization boundary
+
+The following procedures follow the structure of your existing Qualys documentation while accounting for Wiz's cloud-native security capabilities.
+
+**Implementation note:** Wiz capabilities depend on the organization's licensing, enabled modules, cloud permissions, and integrations. The procedures below describe the intended operating model. The Wiz administrators should validate the specific collection methods, benchmark availability, reporting options, and supported workload types before these procedures are formally approved.
+
+---
+
+# 1. Infrastructure Security: Vulnerability Management, Detection, and Response (VMDR)
+
+### Objective
+
+Wiz is a cloud-native security platform used to proactively discover, identify, assess, and prioritize vulnerabilities across cloud infrastructure environments. It provides visibility into security weaknesses affecting cloud compute instances, operating systems, installed software, and associated cloud resources.
+
+Wiz supports vulnerability management by identifying known vulnerabilities, evaluating their severity and potential exploitability, and providing remediation recommendations to reduce the organization's exposure to security threats.
+
+### Scope
+
+Vulnerability assessments cover cloud infrastructure resources hosted across AWS, Microsoft Azure, and Google Cloud Platform (GCP), including:
+
+- AWS EC2 instances.
+- Azure Virtual Machines.
+- Google Compute Engine instances.
+- Operating systems and installed software packages.
+- Supported cloud infrastructure components.
+
+Scanning activities cover production and non-production environments where those resources are onboarded into Wiz.
+
+Only validated vulnerabilities affecting production resources within the approved GovRAMP authorization boundary are considered for inclusion in the official POA&M, consistent with the organization's reporting requirements.
+
+### Data Collection Method
+
+Vulnerability data is collected through Wiz's cloud-native security assessment capabilities.
+
+Wiz primarily uses agentless scanning technologies and cloud provider API integrations to discover infrastructure assets and identify vulnerabilities.
+
+Data collection activities include:
+
+- Automated discovery of cloud compute resources.
+- Inspection of supported virtual machine workloads.
+- Identification of operating systems and installed software packages.
+- Detection of known vulnerabilities using CVE information.
+- Evaluation of vulnerability severity and exploitability.
+- Continuous monitoring of onboarded cloud environments.
+
+Wiz may also use additional scanning capabilities or integrations depending on the organization's deployment configuration.
+
+Unlike the Qualys agent-based approach described in the existing procedure, Wiz does not necessarily require a traditional vulnerability scanning agent installed on every virtual machine.
+
+### Configuration Details
+
+Key configuration components supporting infrastructure vulnerability management include:
+
+- Onboarding AWS accounts, Azure subscriptions, and GCP projects into Wiz.
+- Defining the GovRAMP authorization boundary using approved cloud account inventories.
+- Configuring Wiz Projects, resource tags, or other supported filtering mechanisms to distinguish production from non-production environments.
+- Establishing appropriate cloud permissions for resource discovery and security assessment.
+- Enabling the applicable vulnerability detection capabilities.
+- Configuring severity classifications, remediation workflows, and reporting requirements.
+- Validating scanning coverage and identifying unsupported or excluded resources.
+
+### Report Generation Process
+
+Infrastructure vulnerability reports are generated during the **second week of every month**, or upon request from the Infrastructure Security team.
+
+Although Wiz continuously evaluates supported cloud resources, the monthly report provides a defined reporting snapshot for POA&M development and continuous monitoring.
+
+Only validated vulnerabilities affecting production infrastructure within the GovRAMP authorization boundary are included in the official POA&M reporting process.
+
+The report generation process consists of:
+
+1. Log in to the Wiz Security Platform.
+2. Navigate to the vulnerability findings or inventory view available in the organization's Wiz environment.
+3. Apply filters to identify infrastructure vulnerabilities affecting AWS EC2, Azure Virtual Machines, and GCP Compute Engine instances.
+4. Filter the results to production resources associated with approved GovRAMP in-scope cloud accounts.
+5. Select the applicable vulnerability severity levels.
+6. Review the results to identify affected assets, CVEs, severity ratings, detection dates, and remediation recommendations.
+7. Export the filtered vulnerability findings into CSV format, where supported.
+8. Validate the report against the approved GovRAMP infrastructure inventory.
+9. Review findings for duplicates, false positives, exceptions, and previously documented weaknesses.
+10. Upload the validated report to the designated SharePoint repository.
+11. Incorporate applicable findings into the official GovRAMP POA&M documentation.
+
+**Recommended SharePoint folder:**
+
+`1-Monthly Wiz Infrastructure Vulnerability Reports`
+
+**Recommended report naming convention:**
+
+`Wiz_Infrastructure_Vulnerabilities_GovRAMP_YYYY-MM.csv`
+
+### Risk Scoring Methodology
+
+Infrastructure vulnerabilities are prioritized using industry-standard vulnerability scoring methodologies, including CVSS severity ratings and available exploitability indicators.
+
+Wiz's contextual risk information may also be considered when evaluating the potential impact of vulnerabilities.
+
+The organization's proposed remediation timelines are:
+
+| Severity | Remediation SLA |
+|---|---|
+| Critical | Per applicable organizational and GovRAMP requirements |
+| High | 30 days |
+| Medium | 90 days |
+| Low | 180 days |
+
+These timelines reflect the existing Qualys process provided and must be validated against the organization's approved vulnerability management policy and applicable GovRAMP requirements.
+
+Risk prioritization considers vulnerability severity, asset criticality, exploitability, internet exposure, and potential impact on the GovRAMP environment.
+
+### Screenshots on How to Generate Infrastructure Vulnerability Reports
+
+**Screenshot placeholders:**
+
+1. Wiz vulnerability findings dashboard.
+2. Cloud provider and resource-type filters.
+3. GovRAMP production account filters.
+4. Vulnerability severity and CVE details.
+5. CSV export options.
+
+---
+
+# 2. Container Security: Vulnerability Management
+
+### Objective
+
+Wiz is used to identify and assess security vulnerabilities affecting container images, software packages, and containerized workloads deployed across cloud environments.
+
+The objective is to detect vulnerable container components, identify outdated software dependencies, and support timely remediation of security weaknesses that could compromise containerized applications.
+
+### Scope
+
+Container vulnerability scanning covers supported container environments hosted across AWS, Azure, and GCP, including:
+
+- Amazon Elastic Container Registry (ECR).
+- Amazon Elastic Kubernetes Service (EKS).
+- Azure Container Registry (ACR).
+- Azure Kubernetes Service (AKS).
+- Google Artifact Registry.
+- Google Kubernetes Engine (GKE).
+- Supported container images and running container workloads.
+- Operating system packages and application dependencies included in container images.
+
+Scanning applies to production and non-production container environments onboarded into Wiz.
+
+Only validated vulnerabilities affecting production container resources within the GovRAMP authorization boundary are considered for official POA&M reporting.
+
+### Data Collection Method
+
+Container vulnerability data is collected through Wiz's supported container image and cloud workload assessment capabilities.
+
+Data collection activities include:
+
+- Discovery of container registries and repositories.
+- Identification of container images and associated metadata.
+- Analysis of operating system packages and application dependencies within supported images.
+- Detection of known vulnerabilities associated with container components.
+- Identification of affected image versions and available software fixes.
+- Correlation of vulnerable container images with deployed workloads, where supported.
+
+Wiz may obtain container security information through cloud integrations, agentless assessment, registry scanning, or supported development pipeline integrations.
+
+### Configuration Details
+
+Key configuration elements include:
+
+- Integration with approved container registries and cloud environments.
+- Identification of GovRAMP in-scope container repositories and workloads.
+- Configuration of Wiz Projects or resource filters for production environments.
+- Enablement of supported container image vulnerability scanning capabilities.
+- Configuration of access permissions for container registries.
+- Definition of vulnerability severity and remediation priorities.
+- Identification of container image owners and responsible application teams.
+
+### Report Generation Process
+
+Container vulnerability reports are generated during the second week of each month or upon request.
+
+The reporting process includes:
+
+1. Log in to Wiz.
+2. Navigate to the container security, vulnerability findings, or applicable inventory view.
+3. Select container images or container workloads.
+4. Apply filters for AWS, Azure, and GCP.
+5. Restrict results to production container resources within the GovRAMP authorization boundary.
+6. Review identified CVEs, affected images, software packages, severity ratings, and remediation recommendations.
+7. Export the applicable vulnerability findings in CSV format.
+8. Validate the findings against the approved container inventory.
+9. Identify duplicate vulnerabilities associated with multiple image versions or deployments.
+10. Upload the report to SharePoint.
+11. Include validated and reportable vulnerabilities in the official GovRAMP POA&M.
+
+**Recommended SharePoint folder:**
+
+`2-Monthly Wiz Container Vulnerability Reports`
+
+**Recommended report naming convention:**
+
+`Wiz_Container_Vulnerabilities_GovRAMP_YYYY-MM.csv`
+
+### Risk Scoring Methodology
+
+Container vulnerabilities are prioritized based on CVSS severity, known exploitability, affected software packages, and the exposure and criticality of the deployed workload.
+
+The existing organizational remediation timelines apply, subject to validation against applicable GovRAMP requirements.
+
+Additional consideration should be given to vulnerabilities affecting actively deployed production containers compared with images that are not deployed.
+
+### Screenshots on How to Generate Container Vulnerability Reports
+
+1. Wiz container inventory.
+2. Container image vulnerability findings.
+3. Production environment filters.
+4. CVE and affected image details.
+5. CSV export options.
+
+---
+
+# 3. Serverless Security: Vulnerability Management
+
+### Objective
+
+Wiz is used to identify and assess vulnerabilities affecting supported serverless applications and functions deployed across cloud environments.
+
+The objective is to identify vulnerable application dependencies, outdated runtime components, and other detectable security weaknesses that could affect the confidentiality, integrity, or availability of serverless workloads.
+
+### Scope
+
+Serverless vulnerability scanning covers supported services, including:
+
+- AWS Lambda.
+- Azure Functions.
+- Google Cloud Functions.
+- Other supported serverless workloads onboarded into Wiz.
+
+Scanning applies to production and non-production environments.
+
+Only validated vulnerabilities affecting production serverless resources within the GovRAMP authorization boundary are considered for official POA&M reporting.
+
+### Data Collection Method
+
+Serverless vulnerability information is collected through supported cloud provider integrations and Wiz's workload assessment capabilities.
+
+Data collection may include:
+
+- Discovery of serverless functions and associated resources.
+- Identification of function runtimes and supported dependency information.
+- Detection of known vulnerabilities in accessible application packages and dependencies.
+- Identification of outdated or unsupported runtime versions.
+- Evaluation of associated security exposure and configuration risks.
+
+The extent of dependency inspection and vulnerability detection depends on the supported serverless platform, packaging method, and enabled Wiz capabilities.
+
+### Configuration Details
+
+Key configuration components include:
+
+- Onboarding the applicable cloud accounts and projects.
+- Enabling supported serverless security assessment capabilities.
+- Defining production and non-production resource classifications.
+- Identifying GovRAMP in-scope serverless functions.
+- Configuring resource access permissions.
+- Establishing vulnerability severity and reporting requirements.
+- Mapping serverless resources to responsible application teams.
+
+### Report Generation Process
+
+Serverless vulnerability reports are generated during the second week of every month or upon request.
+
+The reporting process includes:
+
+1. Log in to Wiz.
+2. Navigate to the applicable vulnerability findings or serverless resource inventory view.
+3. Filter results to supported serverless workload types.
+4. Apply the GovRAMP production boundary filters.
+5. Review identified vulnerabilities, affected functions, runtime information, and remediation recommendations.
+6. Export the findings into CSV format where supported.
+7. Validate the results against the approved serverless resource inventory.
+8. Review findings for applicability, duplicates, and approved exceptions.
+9. Upload the report to SharePoint.
+10. Incorporate validated and reportable findings into the GovRAMP POA&M.
+
+**Recommended SharePoint folder:**
+
+`3-Monthly Wiz Serverless Vulnerability Reports`
+
+**Recommended report naming convention:**
+
+`Wiz_Serverless_Vulnerabilities_GovRAMP_YYYY-MM.csv`
+
+### Risk Scoring Methodology
+
+Serverless vulnerabilities are prioritized based on CVSS severity, exploitability, runtime exposure, application criticality, and potential impact on the GovRAMP environment.
+
+Remediation timelines follow the organization's approved vulnerability management policy and applicable GovRAMP requirements.
+
+### Screenshots on How to Generate Serverless Vulnerability Reports
+
+1. Wiz serverless inventory.
+2. Serverless vulnerability findings.
+3. Production account and project filters.
+4. Vulnerability details and remediation recommendations.
+5. Report export options.
+
+---
+
+# 4. Database Security: Vulnerability Management
+
+### Objective
+
+Wiz is used to identify and assess security vulnerabilities and detectable configuration weaknesses affecting cloud-hosted database resources.
+
+The objective is to identify vulnerable database software, unsupported versions, and security exposures that could increase the risk of unauthorized access, data compromise, or service disruption.
+
+Wiz supports database security monitoring through its cloud security assessment capabilities. However, vulnerability coverage differs between databases installed on virtual machines and managed database services.
+
+### Scope
+
+Database vulnerability assessments cover supported database resources across AWS, Azure, and GCP, including:
+
+**AWS:**
+- Amazon RDS.
+- Amazon Aurora.
+- Amazon DynamoDB.
+- Database software installed on EC2 instances.
+
+**Azure:**
+- Azure SQL Database.
+- Azure Database for PostgreSQL.
+- Azure Database for MySQL.
+- Database software installed on Azure Virtual Machines.
+
+**GCP:**
+- Google Cloud SQL.
+- Google AlloyDB.
+- Database software installed on Compute Engine instances.
+
+Scanning applies to production and non-production database environments onboarded into Wiz.
+
+Only validated findings affecting production database resources within the GovRAMP authorization boundary are considered for official POA&M reporting.
+
+### Data Collection Method
+
+Database security data is collected through supported cloud provider API integrations, resource discovery, and workload assessment capabilities.
+
+Data collection activities may include:
+
+- Discovery of cloud database instances and services.
+- Identification of database engines and available version information.
+- Detection of vulnerable database software installed on supported virtual machines.
+- Identification of outdated or unsupported database versions where detectable.
+- Assessment of database-related cloud security configurations.
+- Identification of potentially exposed database resources.
+- Evaluation of database security risks using available cloud configuration and vulnerability information.
+
+**Important:** Wiz should not automatically be assumed to perform authenticated, database-engine-level vulnerability scanning of every managed database service.
+
+For managed databases, Wiz may identify configuration weaknesses, exposed resources, or version-related risks without performing the same internal vulnerability checks available through a dedicated database vulnerability scanner.
+
+The Wiz administrators must confirm which database vulnerability detection capabilities are enabled and supported for each service.
+
+### Configuration Details
+
+Key configuration components include:
+
+- Onboarding database-hosting cloud accounts into Wiz.
+- Identifying GovRAMP in-scope database resources.
+- Configuring production and non-production resource classifications.
+- Enabling supported database security assessment capabilities.
+- Configuring cloud permissions for database resource discovery.
+- Defining applicable database security policies.
+- Establishing database ownership and remediation responsibilities.
+- Documenting unsupported database scanning capabilities and coverage gaps.
+
+### Report Generation Process
+
+Database vulnerability reports are generated during the second week of each month or upon request.
+
+The reporting process includes:
+
+1. Log in to Wiz.
+2. Navigate to the applicable vulnerability findings or cloud resource inventory view.
+3. Filter resources by supported database service or database-hosting compute instances.
+4. Apply the approved GovRAMP production boundary filters.
+5. Review available vulnerability and database security findings.
+6. Identify affected database resources, engine versions, severity ratings, and remediation recommendations.
+7. Export applicable findings in CSV format.
+8. Validate the report against the approved database inventory.
+9. Identify any database resources not covered by the available scanning capabilities.
+10. Upload the validated report to SharePoint.
+11. Include applicable, validated weaknesses in the official GovRAMP POA&M.
+
+**Recommended SharePoint folder:**
+
+`4-Monthly Wiz Database Vulnerability Reports`
+
+**Recommended report naming convention:**
+
+`Wiz_Database_Vulnerabilities_GovRAMP_YYYY-MM.csv`
+
+### Risk Scoring Methodology
+
+Database security findings are prioritized based on vulnerability severity, exploitability, database exposure, data sensitivity, and potential impact on the GovRAMP environment.
+
+Special consideration should be given to vulnerabilities affecting databases containing sensitive information or supporting critical applications.
+
+Remediation timelines follow the organization's approved vulnerability management policy and applicable GovRAMP requirements.
+
+### Screenshots on How to Generate Database Vulnerability Reports
+
+1. Wiz database resource inventory.
+2. Database-related security findings.
+3. Production database filters.
+4. Vulnerability or configuration finding details.
+5. CSV export options.
+
+---
+
+# 5. Web Application Security: Vulnerability Management
+
+### Objective
+
+Wiz is used to identify and assess detectable security vulnerabilities affecting cloud-hosted web applications and their supporting infrastructure.
+
+The objective is to identify vulnerable application components, insecure configurations, exposed workloads, and security weaknesses that could increase the risk of unauthorized access or compromise.
+
+Wiz supports cloud workload and application security analysis, but its capabilities should not automatically be considered equivalent to a dedicated Dynamic Application Security Testing (DAST) solution.
+
+### Scope
+
+Web application vulnerability assessment covers supported cloud-hosted application components, including:
+
+- Web applications hosted on AWS EC2, Azure Virtual Machines, and GCP Compute Engine.
+- Containerized web applications.
+- Serverless web application components.
+- Application software packages and dependencies.
+- Cloud infrastructure supporting web applications.
+- Supported application exposure and configuration findings.
+
+Scanning applies to production and non-production environments.
+
+Only validated findings affecting production applications within the GovRAMP authorization boundary are considered for official POA&M reporting.
+
+### Data Collection Method
+
+Web application security findings are collected through Wiz's supported cloud workload, vulnerability, and application security assessment capabilities.
+
+Data collection may include:
+
+- Discovery of cloud resources hosting web applications.
+- Identification of vulnerable software packages and application dependencies.
+- Detection of known CVEs affecting supported application components.
+- Identification of exposed cloud workloads and associated security risks.
+- Evaluation of relevant cloud configuration weaknesses.
+- Correlation of vulnerable application components with cloud resources, where supported.
+
+**Important:** Wiz's identification of vulnerable application packages does not necessarily establish that it performs active web application penetration testing or DAST.
+
+Testing for vulnerabilities such as SQL injection, cross-site scripting, authentication bypass, and application-specific business logic flaws may require a dedicated web application security testing solution.
+
+If these testing activities are required for the GovRAMP environment, the organization should confirm whether they are covered by another approved security tool or assessment process.
+
+### Configuration Details
+
+Key configuration components include:
+
+- Onboarding cloud accounts hosting web applications.
+- Identifying GovRAMP in-scope applications and supporting resources.
+- Configuring production and non-production environment classifications.
+- Enabling supported application and workload vulnerability detection capabilities.
+- Establishing application ownership and resource-to-application mappings.
+- Defining applicable security policies and reporting requirements.
+- Identifying web application testing capabilities not provided by Wiz.
+
+### Report Generation Process
+
+Web application vulnerability reports are generated during the second week of every month or upon request.
+
+The reporting process includes:
+
+1. Log in to Wiz.
+2. Navigate to the applicable vulnerability findings or cloud workload inventory view.
+3. Identify resources associated with web applications.
+4. Apply filters for production applications within the GovRAMP authorization boundary.
+5. Review identified vulnerabilities affecting application packages, dependencies, and supporting workloads.
+6. Identify affected applications, associated cloud resources, CVEs, severity ratings, and remediation recommendations.
+7. Export the applicable findings into CSV format.
+8. Validate the findings against the approved application inventory.
+9. Review findings for applicability, duplication, and remediation ownership.
+10. Upload the report to SharePoint.
+11. Include validated and reportable findings in the official GovRAMP POA&M.
+
+**Recommended SharePoint folder:**
+
+`5-Monthly Wiz Web Application Vulnerability Reports`
+
+**Recommended report naming convention:**
+
+`Wiz_Web_Application_Vulnerabilities_GovRAMP_YYYY-MM.csv`
+
+### Risk Scoring Methodology
+
+Web application security findings are prioritized based on vulnerability severity, exploitability, application exposure, business criticality, and potential impact on the GovRAMP environment.
+
+CVSS ratings may be used for applicable CVE-based findings. Other application security weaknesses require an appropriate risk assessment methodology.
+
+Remediation timelines follow the organization's approved vulnerability management policy and applicable GovRAMP requirements.
+
+### Screenshots on How to Generate Web Application Vulnerability Reports
+
+1. Wiz application or workload inventory.
+2. Application-related vulnerability findings.
+3. GovRAMP production filters.
+4. CVE and application dependency details.
+5. CSV export options.
+
+---
+
+# 6. Software Inventory Management
+
+### Objective
+
+Wiz is used to maintain visibility into detectable software packages and components associated with supported cloud infrastructure and workloads.
+
+The objective is to identify outdated, vulnerable, or unsupported software, support vulnerability and patch management activities, and improve visibility into the software footprint within the GovRAMP authorization boundary.
+
+### Scope
+
+Software inventory activities cover supported cloud resources across AWS, Azure, and GCP, including:
+
+- Operating systems.
+- Installed software packages.
+- Software versions and build information where available.
+- Container image packages and dependencies.
+- Supported serverless application dependencies.
+- Database software installed on supported compute instances.
+
+Inventory collection applies to production and non-production environments.
+
+The official GovRAMP inventory reporting process focuses on production resources within the approved authorization boundary.
+
+### Data Collection Method
+
+Software inventory data is collected through Wiz's supported cloud workload inspection and asset discovery capabilities.
+
+Data collection activities may include:
+
+- Discovery of cloud compute instances and workloads.
+- Identification of installed operating system packages.
+- Collection of detectable software package names and versions.
+- Identification of container image software components.
+- Collection of supported application dependency information.
+- Correlation of software packages with known vulnerabilities.
+- Identification of potentially outdated or unsupported software where sufficient information is available.
+
+Wiz's software inventory should be evaluated against the organization's authoritative asset inventory and any existing software asset management systems.
+
+### Configuration Details
+
+Key configuration components include:
+
+- Onboarding cloud infrastructure into Wiz.
+- Defining production and non-production resource classifications.
+- Configuring GovRAMP authorization boundary filters.
+- Enabling supported software and workload inventory capabilities.
+- Establishing asset ownership and application mappings.
+- Configuring appropriate cloud permissions.
+- Identifying inventory coverage limitations and unsupported software types.
+
+### Report Generation Process
+
+Software inventory reports are generated monthly to provide visibility into software deployed across the GovRAMP production environment.
+
+The reporting process includes:
+
+1. Log in to Wiz.
+2. Navigate to the applicable software inventory, workload inventory, or vulnerability-related inventory view.
+3. Filter resources to approved GovRAMP production cloud accounts.
+4. Identify supported software packages and associated assets.
+5. Review available software names, versions, operating systems, and resource information.
+6. Export the inventory in CSV format where supported.
+7. Validate the results against the approved infrastructure and application inventories.
+8. Identify outdated or unsupported software requiring additional review.
+9. Upload the report to SharePoint.
+10. Incorporate relevant information into the overall GovRAMP inventory documentation.
+
+Validated software vulnerabilities or unsupported software weaknesses are evaluated for POA&M inclusion.
+
+**Recommended SharePoint folder:**
+
+`6-Monthly Wiz Software Inventory Reports`
+
+**Recommended report naming convention:**
+
+`Wiz_Software_Inventory_GovRAMP_YYYY-MM.csv`
+
+### Risk Scoring Methodology
+
+Software inventory information supports risk assessment by identifying potentially vulnerable, outdated, or unsupported software components.
+
+Risk is evaluated based on the presence of known vulnerabilities, software support status, asset criticality, exposure, and potential impact on the GovRAMP environment.
+
+### Screenshots on How to Generate Software Inventory Reports
+
+1. Wiz software or workload inventory view.
+2. GovRAMP production resource filters.
+3. Software package and version details.
+4. Resource-to-software mapping.
+5. CSV export options.
+
+---
+
+# 7. Audit and Compliance Management: CIS Benchmark Level 2
+
+### Objective
+
+Wiz is used to assess supported cloud infrastructure and workload configurations against applicable Center for Internet Security (CIS) Benchmark Level 2 security configuration requirements.
+
+The objective is to identify security misconfigurations, support secure configuration management, improve system hardening, and provide evidence supporting the organization's GovRAMP Moderate compliance activities.
+
+### Scope
+
+CIS Level 2 compliance assessments cover supported infrastructure and cloud workloads across AWS, Azure, and GCP.
+
+Applicable assessment targets may include:
+
+- Cloud platform configurations.
+- Supported operating systems.
+- Virtual machines.
+- Container and Kubernetes configurations.
+- Other supported resources with applicable CIS benchmarks.
+
+Assessments apply to production and non-production environments where supported and configured.
+
+Only validated compliance weaknesses affecting the GovRAMP authorization boundary are considered for official POA&M reporting.
+
+**Note:** CIS Level 2 requirements differ by benchmark and technology. The applicable benchmark, version, profile, and assessment coverage must be confirmed for each resource category.
+
+### Data Collection Method
+
+Compliance assessment data is collected through Wiz's cloud security posture management and supported workload configuration assessment capabilities.
+
+Data collection activities include:
+
+- Discovery of applicable cloud resources.
+- Collection of supported cloud configuration information.
+- Evaluation of security settings against configured CIS benchmark requirements.
+- Identification of failed security configuration checks.
+- Association of compliance findings with affected resources.
+- Identification of remediation recommendations for detected misconfigurations.
+- Continuous evaluation of supported cloud configurations.
+
+For operating system benchmarks, the ability to inspect individual configuration settings depends on the available Wiz assessment capabilities and workload access.
+
+### Configuration Details
+
+Key configuration components include:
+
+- Selection of the applicable CIS benchmarks and versions.
+- Confirmation that the required Level 2 checks are included.
+- Identification of GovRAMP in-scope resources.
+- Configuration of cloud account and environment filters.
+- Enablement of applicable compliance policies.
+- Establishment of appropriate cloud access permissions.
+- Identification of compliance exceptions and approved deviations.
+- Configuration of reporting and remediation workflows.
+
+DISA STIG requirements remain under review and should not be represented as an approved or fully implemented assessment standard until the organization completes its evaluation.
+
+### Report Generation Process
+
+CIS Level 2 compliance reports are generated during the second week of every month or upon request.
+
+The reporting process includes:
+
+1. Log in to the Wiz Security Platform.
+2. Navigate to the compliance framework or compliance assessment view.
+3. Select the applicable CIS benchmark and version.
+4. Confirm the assessment includes the required CIS Level 2 checks.
+5. Apply filters for AWS, Azure, and GCP as applicable.
+6. Restrict the report to production resources within the approved GovRAMP authorization boundary.
+7. Review failed compliance checks and affected resources.
+8. Identify the applicable CIS check identifiers, compliance status, resource details, and remediation recommendations.
+9. Export the applicable compliance findings into CSV format where supported.
+10. Validate the report against the approved GovRAMP asset inventory.
+11. Review findings for applicability, duplicates, approved exceptions, and existing remediation activities.
+12. Map validated weaknesses to applicable NIST SP 800-53 Rev. 5 controls.
+13. Upload the validated report to SharePoint.
+14. Incorporate reportable compliance weaknesses into the official GovRAMP POA&M documentation.
+
+**Recommended SharePoint folder:**
+
+`7-Monthly Wiz CIS Level 2 Compliance Reports`
+
+**Recommended report naming convention:**
+
+`Wiz_CIS_Level_2_Compliance_GovRAMP_YYYY-MM.csv`
+
+### Risk Scoring Methodology
+
+Compliance risk is evaluated based on the severity and potential impact of failed CIS Level 2 configuration checks.
+
+Risk assessment considers:
+
+- The nature of the failed configuration requirement.
+- The affected system or resource.
+- The associated NIST security control.
+- Asset criticality.
+- Potential security impact.
+- Existing compensating controls.
+- Exposure and exploitability where applicable.
+
+CIS compliance failures are not automatically assigned CVSS scores because configuration findings do not necessarily represent CVE-based vulnerabilities.
+
+The GRC team evaluates applicable findings to determine whether they represent reportable security weaknesses requiring POA&M tracking.
+
+### Screenshots on How to Generate CIS Level 2 Compliance Reports
+
+1. Wiz compliance dashboard.
+2. CIS benchmark selection.
+3. CIS Level 2 assessment results.
+4. GovRAMP production boundary filters.
+5. Failed compliance checks.
+6. Compliance report export options.
+
+---
+
+# 8. GovRAMP POA&M Reporting and Reconciliation
+
+### Objective
+
+Establish a consistent process for collecting, validating, consolidating, and tracking applicable security findings identified through Wiz.
+
+The objective is to ensure that reportable vulnerabilities and compliance weaknesses affecting the GovRAMP authorization boundary are accurately represented in the official POA&M and supported by sufficient evidence.
+
+### Scope
+
+The process covers applicable findings originating from:
+
+- Infrastructure vulnerability assessments.
+- Container vulnerability assessments.
+- Serverless vulnerability assessments.
+- Database vulnerability and security assessments.
+- Web application component vulnerability assessments.
+- Software inventory reviews.
+- CIS Level 2 compliance assessments.
+
+### Data Collection Method
+
+Security findings are collected through approved Wiz reports, structured exports, or supported API integrations.
+
+The data is reviewed and reconciled against the authoritative GovRAMP inventory and existing POA&M records.
+
+### Configuration Details
+
+The POA&M reporting process requires:
+
+- An approved GovRAMP cloud account inventory.
+- A documented application-to-cloud-account mapping.
+- Consistent production resource identification.
+- Defined vulnerability and compliance finding eligibility criteria.
+- A unique finding identification and reconciliation mechanism.
+- Documented remediation ownership.
+- Defined remediation SLAs.
+- Approved risk acceptance and exception procedures.
+- Evidence retention and closure validation requirements.
+
+### Report Generation Process
+
+The consolidated POA&M reporting process is performed during the second week of each month.
+
+1. Obtain the applicable monthly Wiz vulnerability and compliance reports.
+2. Validate that all approved GovRAMP production cloud accounts are represented.
+3. Reconcile assessed resources against the authoritative asset inventory.
+4. Identify scanning gaps, missing resources, and unsupported workloads.
+5. Consolidate vulnerability and compliance findings into a centralized intake register.
+6. Identify duplicate findings and existing POA&M records.
+7. Validate finding applicability, severity, and associated risk.
+8. Map applicable findings to NIST SP 800-53 Rev. 5 controls.
+9. Assign remediation owners, corrective actions, milestones, and target completion dates.
+10. Create or update official POA&M records for reportable weaknesses.
+11. Validate previously remediated findings using current evidence.
+12. Obtain the required approval before closing POA&M records.
+13. Store monthly reports, supporting evidence, and reconciliation results in SharePoint.
+14. Submit the updated POA&M through the organization's approved GovRAMP reporting process.
+
+### Risk Scoring Methodology
+
+POA&M risk classifications are determined using the organization's approved risk assessment methodology and applicable GovRAMP requirements.
+
+Wiz vulnerability severity, CVSS ratings, exploitability indicators, asset criticality, and potential business impact support risk evaluation.
+
+Compliance findings are assessed according to the nature of the control weakness, potential security impact, and effectiveness of existing safeguards.
+
+### Screenshots on How to Generate Consolidated Reports
+
+1. Wiz vulnerability findings export.
+2. Wiz compliance findings export.
+3. GovRAMP resource inventory export.
+4. Consolidated findings intake register.
+5. POA&M reconciliation results.
+
+---
+
+# 9. Monthly Reporting Schedule
+
+The following schedule provides a proposed operating cadence consistent with your existing Qualys reporting process.
+
+| Activity | Responsible Team | Proposed Frequency | Output |
+|---|---|---|---|
+| Validate GovRAMP cloud account inventory | Cloud Security / Infrastructure | Monthly | Approved account inventory |
+| Infrastructure vulnerability reporting | Wiz / Infrastructure Security | Second week monthly | Infrastructure vulnerability CSV |
+| Container vulnerability reporting | Wiz / Container Security | Second week monthly | Container vulnerability CSV |
+| Serverless vulnerability reporting | Wiz / Cloud Security | Second week monthly | Serverless vulnerability CSV |
+| Database vulnerability reporting | Wiz / Database Security | Second week monthly | Database security findings CSV |
+| Web application vulnerability reporting | Wiz / Application Security | Second week monthly | Application-related findings CSV |
+| Software inventory reporting | Wiz / Infrastructure Security | Second week monthly | Software inventory CSV |
+| CIS Level 2 compliance reporting | Wiz / Compliance Team | Second week monthly | CIS compliance CSV |
+| Findings validation and reconciliation | GRC / Security Teams | Following report generation | Validated findings register |
+| POA&M updates | GRC / Remediation Owners | Monthly and as required | Updated POA&M |
+| POA&M quality review | GRC | Before submission | Reviewed POA&M and evidence |
+
+**Operational consideration:** Monthly reporting should not delay the investigation or remediation of critical security findings. High-risk findings should continue to follow the organization's established vulnerability escalation and remediation procedures.
+
+---
+
+# 10. Important Considerations Before Finalizing the Procedures
+
+There are four areas I recommend validating with the Wiz stakeholders before adopting these procedures as official documentation.
+
+| Area | Validation Required |
+|---|---|
+| **Database scanning** | Confirm whether Wiz provides database-engine vulnerability assessment or primarily cloud configuration and workload vulnerability findings for each database service. |
+| **Web application scanning** | Confirm whether Wiz is being used for application dependency vulnerability assessment, web application exposure analysis, or additional application security capabilities. Do not assume DAST coverage. |
+| **CIS Level 2 scanning** | Confirm the exact CIS benchmarks, versions, supported resources, and Level 2 checks enabled in Wiz. |
+| **Report generation** | Confirm the actual Wiz navigation paths, export capabilities, available report fields, and authorization boundary filtering mechanisms. |
+
+## Final Recommendation
+
+For your GovRAMP Moderate Phase 3 activities, I recommend maintaining these eight procedures as separate sections within a single **Wiz Security Scanning, Compliance Monitoring, and POA&M Reporting Standard Operating Procedure (SOP)**.
+
+The procedures should share a common reporting cadence, authorization boundary definition, evidence retention process, and POA&M reconciliation methodology.
+
+Most importantly, distinguish between **vulnerability scanning, cloud configuration assessment, software inventory, and application security testing**. Although Wiz can provide findings across several of these areas, the underlying assessment methods and coverage are not necessarily equivalent.
+
+This distinction will help ensure that your GovRAMP documentation accurately represents the security assessments being performed and that unsupported scanning capabilities are not inadvertently claimed.
